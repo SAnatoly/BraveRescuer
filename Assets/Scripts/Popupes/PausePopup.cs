@@ -7,7 +7,6 @@ namespace DefaultNamespace.Popupes
     {
         public Button _resumeButton;
         public Button _exitButton;
-        public Button _closeButton;
 
         private Button _pauseButton;
         public void Show(Button pauseButton)
@@ -15,13 +14,13 @@ namespace DefaultNamespace.Popupes
             _pauseButton = pauseButton;
             gameObject.SetActive(true);
             _pauseButton.gameObject.SetActive(false);
-            _closeButton.onClick.AddListener(Hide);
+            _resumeButton.onClick.AddListener(Hide);
         }
 
         public void Hide()
         {
             _pauseButton.gameObject.SetActive(true);
-            _closeButton.onClick.RemoveListener(Hide);
+            _resumeButton.onClick.RemoveListener(Hide);
             gameObject.SetActive(false);
         }
     }

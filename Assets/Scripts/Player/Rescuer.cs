@@ -2,7 +2,7 @@ using DefaultNamespace.Listeners;
 using Player;
 using UnityEngine;
 
-public class Rescuer : MonoBehaviour, IGameStartListener, IGameUpdateListener
+public class Rescuer : MonoBehaviour
 {
    [SerializeField] private AtomicVarible<float> _health;
 
@@ -14,13 +14,13 @@ public class Rescuer : MonoBehaviour, IGameStartListener, IGameUpdateListener
    private Movement _movement;
    private Rotation _rotation;
 
-   public void OnStart()
+   public void Start()
    {
       _movement = new Movement(_moveSpeed, _moveDiraction, transform);
       _rotation = new Rotation(_rotationDiraction, _rotationSpeed, transform);
    }
 
-   public void OnUpdate(float deltaTime)
+   public void Update()
    {
       _movement.Update();
       _rotation.Update();

@@ -1,7 +1,8 @@
+using System;
 using DefaultNamespace.Listeners;
 using UnityEngine;
 
-public class InputManager: MonoBehaviour, IGameUpdateListener, IGameStartListener
+public class InputManager: MonoBehaviour
 {
 
    [SerializeField] private Rescuer _rescuer;
@@ -9,12 +10,12 @@ public class InputManager: MonoBehaviour, IGameUpdateListener, IGameStartListene
    
    private InputController _inputSources;
 
-   public void OnStart()
+   private void Awake()
    {
       _inputSources = new KeyboardInput();
    }
-   
-   public void OnUpdate(float deltaTime)
+
+   public void Update()
    {
       MoveRescuer();
       RotateRescuer();
