@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.PlayerLoop;
@@ -21,12 +22,19 @@ namespace Pool
         {
             EventSystem.EventSystem._instance.onFireDead.Subscribe(ObjectDead);
 
+            StartCoroutine(InstantiateObjectsWithDelay());
+        }
+
+        private IEnumerator InstantiateObjectsWithDelay()
+        {
             for (int i = 0; i < _poolSize; i++)
             {
                 InstatiateObject();
+                yield return new WaitForSeconds(Random.Range(1, 3f)); // Задержка между созданием объектов
             }
         }
 
+        
         public void InstatiateObject()
         {
             GameObject obj = _poolMechanics.GetObject();
@@ -41,10 +49,7 @@ namespace Pool
         public void ObjectDead(GameObject gameObject)
         {
             _poolMechanics.ReturnObject(gameObject);
-            //Invoke("InstatiateObject", Random.Range(0.5f, 1f));
             InstatiateObject();
-            Debug.Log("FFFFF");
-            
         }
     }
 }

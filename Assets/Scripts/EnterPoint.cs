@@ -14,6 +14,8 @@ namespace DefaultNamespace
         [SerializeField] private PausePopup _pausePopup;
         [SerializeField] private LevelManager _levelManager;
         
+        
+        
         public void Start()
         {
             var button = Instantiate(_openMenuPrefab, _buttonPerent);

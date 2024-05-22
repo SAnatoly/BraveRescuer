@@ -6,15 +6,10 @@ namespace View
     public class TimerView: MonoBehaviour
     {
         [SerializeField] private TMP_Text _timerText;
-
-        public void Visualisate(ITimerPresenter timerPresenter)
+        [SerializeField] private Timer _timer;
+        public void Update()
         {
-            Refresh(timerPresenter);
-        }
-
-        public void Refresh(ITimerPresenter timerPresenter)
-        {
-            _timerText.text = timerPresenter.TimeText;
+            _timerText.text = _timer.GetTimerFormat();
         }
     }
 }
